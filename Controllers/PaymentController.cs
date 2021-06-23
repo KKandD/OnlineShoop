@@ -77,9 +77,9 @@ namespace Codecool.CodecoolShop.Controllers
 
         public void SendEmail()
         {
-            var fromAddress = new MailAddress("filip.brzezinski.it@gmail.com", "Best Shoop EU");
-            var toAddress = new MailAddress("filip.brzezinski102@wp.pl", "To Name");
-            const string fromPassword = "HasloDlaSklepu1";
+            var fromAddress = new MailAddress("email1", "Best Shoop EU");
+            var toAddress = new MailAddress("email2", "To Name");
+            const string fromPassword = "Password";
             const string subject = "Kozackie zamówienie";
             const string body = "Siemanko!\n" +
                 "\nDzięki za zamówienie w naszym sklepie.\n" +
