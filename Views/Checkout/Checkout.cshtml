@@ -1,0 +1,86 @@
+﻿@model Codecool.CodecoolShop.Models.Checkout
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@*<h1>View</h1>*@
+
+<h4>Checkout</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Checkout">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div>
+                <label><strong>Billing address</strong></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingCountry" class="control-label"></label>
+                <input asp-for="BillingCountry" class="form-control" />
+                <span asp-validation-for="BillingCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingCity" class="control-label"></label>
+                <input asp-for="BillingCity" class="form-control" />
+                <span asp-validation-for="BillingCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingZipCode" class="control-label"></label>
+                <input asp-for="BillingZipCode" class="form-control" />
+                <span asp-validation-for="BillingZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingAddress" class="control-label"></label>
+                <input asp-for="BillingAddress" class="form-control" />
+                <span asp-validation-for="BillingAddress" class="text-danger"></span>
+            </div>
+            <div>
+                <label><strong>Shipping address</strong></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingCountry" class="control-label"></label>
+                <input asp-for="ShippingCountry" class="form-control" />
+                <span asp-validation-for="ShippingCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingCity" class="control-label"></label>
+                <input asp-for="ShippingCity" class="form-control" />
+                <span asp-validation-for="ShippingCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingZipCode" class="control-label"></label>
+                <input asp-for="ShippingZipCode" class="form-control" />
+                <span asp-validation-for="ShippingZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingAddress" class="control-label"></label>
+                <input asp-for="ShippingAddress" class="form-control" />
+                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-outline-danger" asp-action="Basket" asp-controller="Cart">Back to Cart</a>
+                <input type="submit" value="Go to payment" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

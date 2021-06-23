@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Basket";
+}
+
+@model CartViewModel
+
+<style>
+    .table-image {
+        td, th
+        {
+        vertical-align: middle;
+    }
+
+    }
+</style>
+
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Price (each)</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Item Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ decimal total = 0;}
+            @foreach (var element in Model.CartItems)
+            {
+                <tr>
+                    @{ var num = Model.CartItems.IndexOf(element) + 1;}
+                    <td><strong>@num</strong></td>
+                    <td>@element.Product.Name</td>
+                    <td style="width:10%"><img src="~/img/@(element.Product.Name).jpg" class="img-fluid"></td>
+                    <td>@element.Product.DefaultPrice.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</td>
+                    <td style="display:flex;">
+                        <a style="margin-right: 20px; margin-top: 10px" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@element.Id"><i class="gg-math-minus"></i></a>
+                        <p style="margin-right: 20px;">@element.Quantity</p>
+                        <a style="margin-top: 10px;" asp-controller="Cart" asp-action="IncreaseQuantity" asp-route-id="@element.Id"><i class="gg-math-plus"></i></a>
+                    </td>
+                    @{ var itemTotal = (element.Product.DefaultPrice * element.Quantity);}
+                    @{ total += itemTotal;}
+                    <td>@itemTotal</td>
+                </tr>
+            }
+        </tbody>
+        <caption>Total: @total</caption>
+    </table>
+    <a class="btn btn-outline-success" asp-area="" asp-controller="Checkout" asp-action="Index" asp-route-id="@Model.CartId" value="Model.CartItems">Checkout!</a>
+
+</div>

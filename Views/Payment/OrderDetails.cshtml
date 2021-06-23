@@ -1,0 +1,47 @@
+﻿@model Codecool.CodecoolShop.Models.OrderDetails
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+
+<style>
+    .table-image {
+        td, th
+
+    {
+        vertical-align: middle;
+    }
+    }
+</style>
+
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price (each)</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Item Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var element in Model.Items)
+            {
+            <tr>
+                @{ var num = Model.Items.IndexOf(element) + 1;}
+                <td><strong>@num</strong></td>
+                <td>@element.Product.Name</td>
+                <td>@element.Product.DefaultPrice.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</td>
+                <td>@element.Quantity</td>
+                @{var sum = element.Product.DefaultPrice* element.Quantity;}
+                <td>@sum</td>
+            </tr>
+            }
+        </tbody>
+        <caption>Total: @Model.TotalAmount</caption>
+    </table>
+    <a class="btn btn-outline-success" asp-area="" asp-controller="Product" asp-action="Index" >Explore more products</a>
+
+</div>

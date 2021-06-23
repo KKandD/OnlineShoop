@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmation</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+    <body>
+        <div class="container">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Price (each)</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Item Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ decimal total = 0;}
+                    @foreach (var element in Model.CartItems)
+                    {
+                    <tr>
+                        @{ var num = Model.CartItems.IndexOf(element) + 1;}
+                        <td><strong>@num</strong></td>
+                        <td>@element.Product.Name</td>
+                        <td style="width:10%"><img src="~/img/@(element.Product.Name).jpg" class="img-fluid"></td>
+                        <td>@element.Product.DefaultPrice.ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("en-us"))</td>
+                        <td style="display:flex;">
+                            <p style="margin-right: 20px;">@element.Quantity</p>
+                        </td>
+                        @{ var itemTotal = (element.Product.DefaultPrice * element.Quantity);}
+                        @{ total += itemTotal;}
+                        <td>@itemTotal</td>
+                    </tr>
+                    }
+                </tbody>
+                <caption>Total: @total</caption>
+            </table>
+        </div>
+    </body>
+</html>

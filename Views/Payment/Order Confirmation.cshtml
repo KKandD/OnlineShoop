@@ -1,0 +1,23 @@
+﻿@model Codecool.CodecoolShop.Models.OrderDetails
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<style>
+    body {
+        height: 100vh;
+    }
+</style>
+
+<div class="d-flex align-items-center justify-content-center w-100 h-100">
+    <div class="text-center m-2">
+        <img src="~/img/confetti.jpg" />
+        <h1>Your order is complete!</h1>
+        <h4>You will be receiving a confirmation email with order details.</h4>
+        <div class="d-flex justify-content-center">
+            <a style="margin-right: 15px" asp-area="" asp-controller="Payment" asp-action="Details" asp-route-id="@Model" class="btn btn-outline-secondary rounded">Order details</a>
+            <a asp-area="" asp-controller="Product" asp-action="Index" class="btn btn-outline-success rounded">Explore more products</a>
+        </div>
+    </div>
+</div>
+
